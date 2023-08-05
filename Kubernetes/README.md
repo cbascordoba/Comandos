@@ -4,7 +4,9 @@ A continuación, se presentan algunos de los comandos básicos más utilizados e
 
 
 ### Crear un recurso en Kubernetes
-```kubectl create deployment nginx --image=nginx:latest```
+```
+kubectl create deployment nginx --image=nginx:latest
+```
 
 ### Obtener información sobre recursos de Kubernetes
 ```kubectl get pods```
