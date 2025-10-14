@@ -1,6 +1,6 @@
 # Comandos Principales de GitHub
 
-Este documento contiene los 10 comandos más importantes de GitHub CLI y Git para trabajar con repositorios de GitHub.
+Este documento contiene los comandos más importantes de GitHub CLI y Git para trabajar con repositorios de GitHub.
 
 ## 1. git clone
 Clona un repositorio desde GitHub a tu máquina local.
@@ -71,6 +71,55 @@ git log --oneline  # Versión resumida
 git log --graph  # Con gráfico de ramas
 ```
 
+## 🚀 Comandos Avanzados de GitHub
+
+### 11. git rebase
+Reaplica commits en una nueva base, útil para mantener un historial lineal.
+```bash
+git rebase main  # Rebase rama actual sobre main
+git rebase -i HEAD~3  # Rebase interactivo de los últimos 3 commits
+git rebase --continue  # Continúa después de resolver conflictos
+git rebase --abort  # Cancela el rebase
+```
+
+### 12. git reset
+Deshace cambios moviendo HEAD a un commit específico.
+```bash
+git reset --soft HEAD~1  # Deshace último commit, mantiene archivos staged
+git reset --mixed HEAD~1  # Deshace commit y staging (por defecto)
+git reset --hard HEAD~1  # Deshace todo, PELIGROSO - pérdida de datos
+git reset archivo.txt  # Quita archivo del staging area
+```
+
+### 13. git stash
+Guarda temporalmente cambios sin hacer commit.
+```bash
+git stash  # Guarda cambios actuales
+git stash push -m "mensaje"  # Guarda con mensaje
+git stash list  # Lista todos los stashes
+git stash pop  # Aplica y elimina el último stash
+git stash apply stash@{1}  # Aplica stash específico sin eliminarlo
+git stash drop stash@{0}  # Elimina stash específico
+```
+
+### 14. gh repo fork
+Crea un fork de un repositorio existente.
+```bash
+gh repo fork usuario/repositorio  # Fork de un repo
+gh repo fork usuario/repositorio --clone  # Fork y clona localmente
+gh repo fork --remote  # Agrega fork como remote al repo actual
+```
+
+### 15. gh release create
+Crea y gestiona releases/versiones en GitHub.
+```bash
+gh release create v1.0.0  # Crea release
+gh release create v1.0.0 --title "Versión 1.0" --notes "Changelog"
+gh release create v1.0.0 archivo.zip  # Con archivos adjuntos
+gh release list  # Lista releases
+gh release view v1.0.0  # Ve detalles de un release
+```
+
 ## Comandos Bonus de GitHub CLI
 
 ### gh repo create
@@ -92,5 +141,21 @@ Fusiona un pull request.
 gh pr merge numero-pr
 ```
 
+### gh issue create
+Crea y gestiona issues.
+```bash
+gh issue create --title "Bug report" --body "Descripción del bug"
+gh issue list  # Lista issues
+gh issue view 1  # Ve issue específico
+```
+
+### gh workflow run
+Ejecuta workflows de GitHub Actions.
+```bash
+gh workflow list  # Lista workflows
+gh workflow run deploy.yml  # Ejecuta workflow específico
+gh run list  # Lista ejecuciones de workflows
+```
+
 ---
-*Creado por: Sebastián Córdoba - DevOps Engineer*
+*Actualizado por: Sebastián Córdoba - DevOps Engineer*
